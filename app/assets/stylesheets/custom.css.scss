@@ -1,0 +1,31 @@
+
+@import 'bootstrap/dist/css/bootstrap';
+
+// .navbar {
+//   background-color: rgb(175, 165, 122) !important;
+// }
+
+// .btn-outline-success {
+//   color: rgb(75, 49, 15) !important;
+//   border-color: rgb(75, 49, 15) !important;
+// }
+
+// .btn-outline-success:hover {
+//   color: rgb(75, 49, 15) !important;
+//   border-color: rgb(75, 49, 15) !important;
+// }
+
+#home-jumbotron {
+  background-image: asset-url('typewriter2.jpg');
+  background-size: cover;
+}
+
+#about-jumbotron {
+  background-image: asset-url('typewriter3.jpg');
+  background-size: cover;
+  background-position: bottom;
+}
+
+.page-content {
+  background-color: rgb(218, 226, 226);
+}
