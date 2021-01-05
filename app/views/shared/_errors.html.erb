@@ -1,7 +1,7 @@
 
 <% if trgt.errors.any? %>
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <h4 class="alert-heading">The following errors prevented the article to be saved:</h4>
+    <h4 class="alert-heading">The following errors prevented the <%= trgt.class.name.downcase %> to be saved:</h4>
     <ul>
       <% trgt.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
