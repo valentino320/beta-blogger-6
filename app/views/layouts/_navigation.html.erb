@@ -23,7 +23,9 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%# <a class="dropdown-item" href="articles">List</a> %>
               <%= link_to "List", articles_path, class: "dropdown-item" %>
-              <%= link_to "Create New Article", new_article_path, class: "dropdown-item" %>
+              <% if logged_in? %>
+                <%= link_to "Create New Article", new_article_path, class: "dropdown-item" %>
+              <% end %>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
@@ -32,18 +34,28 @@
             <%= link_to "About", about_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "BetaBloggers", users_path, class: "nav-link" %>
+            <%= link_to "Bloggers", users_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <% if session[:user_id] == nil %>
+          <% if logged_in? %>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="articles" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Profile [<%= current_user.username%>]
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "View your Profile", user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Edit your Profile", edit_user_path(current_user), class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Log out", logout_path, class: "dropdown-item", method: :delete %>
+            </div>
+            </li>
+          <% else %>  
+            <li class="nav-item">
               <%= link_to "Log in", login_path, class: "nav-link" %>
-            <% else %>  
-              <%= link_to "Log out", logout_path, class: "nav-link", method: :delete %>
-            <% end %>  
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
+            </li>
+            <li>
+              <%= link_to "Sign up", signup_path, class: "nav-link" %>
+            </li>
+          <% end %> 
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
